@@ -4,4 +4,4 @@ RUN mkdir -p /opt/fake-smtp && curl -L -O http://nilhcem.github.com/FakeSMTP/dow
 RUN mv /opt/fake-smtp/fakeSMTP*.jar /opt/fake-smtp/fakeSMTP.jar
 EXPOSE 8080
 VOLUME ["/var/mail"]
-CMD java -jar /opt/fake-smtp/fakeSMTP.jar --start-server --background --output-dir /var/mail --port 25
+CMD java -jar /opt/fake-smtp/fakeSMTP.jar --start-server --background --output-dir /var/mail --port 8080
