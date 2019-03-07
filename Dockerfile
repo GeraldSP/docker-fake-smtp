@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
 USER jboss
-RUN mkdir /opt && wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip && unzip fakeSMTP-latest.zip -d /opt && rm fakeSMTP-latest.zip
-RUN mv /opt/fakeSMTP*.jar /opt/fakeSMTP.jar
+RUN mkdir -p /opt/fake-smtp && wget -q http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip && unzip fakeSMTP-latest.zip -d /opt/fake-smtp && rm fakeSMTP-latest.zip
+RUN mv /opt/fake-smtp/fakeSMTP*.jar /opt/fake-smtp/fakeSMTP.jar
 EXPOSE 25
 VOLUME ["/var/mail"]
-CMD java -jar /opt/fakeSMTP.jar --start-server --background --output-dir /var/mail --port 25
+CMD java -jar /opt/fake-smtp/fakeSMTP.jar --start-server --background --output-dir /var/mail --port 25
